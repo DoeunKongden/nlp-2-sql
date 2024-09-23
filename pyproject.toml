@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "nlp-2-sql"
+version = "0.1.0"
+description = ""
+authors = ["Doeun Kongden <doeunkongden1@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sqlalchemy = "^2.0.35"
+langchain-llm = "^0.4.15"
+pydantic = "^2.9.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

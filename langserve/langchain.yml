@@ -1,0 +1,5 @@
+models:  
+  - id: groq_sql   
+    type: groq    
+    path: D:/AI Journey/lagnchain_full_tutorial/nlp_2_sql_v2/app/services/query_service.py   
+    description: "GROQ LLM for generating SQL queries."
