@@ -1,11 +1,10 @@
-import langchain_core.output_parsers
 from sqlalchemy import text
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from langchain.schema.output_parser import StrOutputParser
 import os
 from langchain_core.prompts import PromptTemplate
-import re
+
+from app.utils.clean_ai_plot_code import clean_ai_plot_code
 
 load_dotenv()
 
@@ -14,7 +13,7 @@ api_key = os.getenv("GROQ_API_KEY")
 
 groq_llm = ChatGroq(
     model="mixtral-8x7b-32768",
-    temperature=0.7,
+    temperature=0,
     max_tokens=None,
     timeout=None,
     max_retries=2,
@@ -63,38 +62,30 @@ def extract_sql_query(response_text):
 # function that will generate the plotting code
 def get_ai_plot_code(db_type, question, results):
     result_str = str(results)
+
+    print("Result of queries execution ",result_str)
     # Use the AI to generate Python code for plotting the database
     generate_code_prompt = f"""
     You are connected to a {db_type} database. You have already retrieved the following data: {result_str}. 
     Your task is to generate **only** the Python code using Matplotlib or Seaborn to create a plot that visualizes this data based on the user's question: {question}.
     Do NOT include any comments, explanations, or extra text like "Here's the code." Return only the Python code, and nothing else.
     """
-
     code_response = groq_llm.invoke(generate_code_prompt)
 
-    # Strip out any leading/trailing whitespace
-    plot_code = code_response.content.strip()
+    print("RAW AI response : ", code_response.content)
 
-    # Replace common placeholders like 'anime_data' with 'data'
-    plot_code = plot_code.replace("anime_data", "data")
-
-    # Remove escaped characters such as '\\n', '\n', and '\t'
-    plot_code = plot_code.replace("\\n", "\n").replace("\\", "").replace("\\t", "\t").strip()
-
-    # Additional cleanup: remove comments (lines starting with '#')
-    plot_code = re.sub(r'#.*', '', plot_code)
-
-    # Strip out any mark down code block markers like ```python and ```
-    plot_code = plot_code.replace('```python', '').replace('```', '').strip()
+    # Clean the AI-generated code using the separate cleaning function
+    plot_code = clean_ai_plot_code(code_response.content.strip())
 
     # Print the cleaned code for debugging
-    print(f"Cleaned AI Plot Code: {plot_code}")
+    print("Clean AI Code", plot_code)
 
-    # Basic validation to ensure the response looks like valid Python plotting code
-    if not plot_code.startswith('plt.') and not plot_code.startswith('sns.'):
+    # Validation: Ensure the response contains valid Python plotting commands
+    if "plt." not in plot_code and "sns." not in plot_code:
         raise ValueError("AI did not return valid Python code. Response received: " + plot_code)
 
     return plot_code
+
 
 def get_ai_response(db_type, question):
     # Format the prompt with the context
