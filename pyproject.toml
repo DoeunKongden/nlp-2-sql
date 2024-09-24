@@ -10,6 +10,8 @@ python = "^3.12"
 sqlalchemy = "^2.0.35"
 langchain-llm = "^0.4.15"
 pydantic = "^2.9.2"
+matplotlib = "^3.9.2"
+seaborn = "^0.13.2"
 
 
 [build-system]
