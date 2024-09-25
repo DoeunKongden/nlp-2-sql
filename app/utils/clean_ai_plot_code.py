@@ -42,5 +42,8 @@ def clean_ai_plot_code(plot_code: str) -> str:
     # Strip out any markdown code block markers like ```python and ```
     plot_code = plot_code.replace('```python', '').replace('```', '').strip()
 
+    # Cleaning out the plt.show()
+    plot_code = plot_code.replace("plt.show()", "")
+
     # Return the cleaned Python plot code
     return plot_code

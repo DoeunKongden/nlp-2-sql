@@ -63,7 +63,7 @@ def extract_sql_query(response_text):
 def get_ai_plot_code(db_type, question, results):
     result_str = str(results)
 
-    print("Result of queries execution ",result_str)
+    print("Result of queries execution ", result_str)
     # Use the AI to generate Python code for plotting the database
     generate_code_prompt = f"""
     You are connected to a {db_type} database. You have already retrieved the following data: {result_str}. 
