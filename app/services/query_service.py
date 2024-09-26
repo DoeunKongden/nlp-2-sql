@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 import os
 from langchain_core.prompts import PromptTemplate
-
-from app.utils.clean_ai_plot_code import clean_ai_plot_code
+from langchain.chains.sql_database.query import create_sql_query_chain
+from app.utils.sql_extraction import extract_sql_query
 
 load_dotenv()
 
@@ -12,7 +12,7 @@ load_dotenv()
 api_key = os.getenv("GROQ_API_KEY")
 
 groq_llm = ChatGroq(
-    model="mixtral-8x7b-32768",
+    model="llama3-groq-8b-8192-tool-use-preview",
     temperature=0,
     max_tokens=None,
     timeout=None,
@@ -27,64 +27,6 @@ Question: {question}
 """
 
 prompt = PromptTemplate.from_template(prompt_template)
-
-
-def extract_sql_query(response_text):
-    try:
-        # Check if the response contains code block markers ```sql
-        if "```sql" in response_text:
-            # Find the part after the opening ```sql
-            sql_query = response_text.split("```sql")[1]
-            # Find the part before the closing ```
-            sql_query = sql_query.split("```")[0].strip()
-        else:
-            # If no code block markers, try extracting the SQL query directly
-            start = response_text.lower().find("select")
-            end = response_text.find(";") + 1
-            if start != -1 and end != -1:
-                sql_query = response_text[start:end].strip()
-            else:
-                return "SQL query not found in the response."
-
-        # Remove any escaped underscores (i.e., convert `table\_name` to `table_name`)
-        sql_query = sql_query.replace("\\_", "_")
-
-        # Perform final cleanup and formatting if necessary
-        sql_query = sql_query.replace("\\n", "\n").replace("\\t", "\t").strip()
-
-        return sql_query
-
-    except IndexError:
-        # If the response doesn't have the expected format, return an error message
-        return "SQL query not found in the response."
-
-
-# function that will generate the plotting code
-def get_ai_plot_code(db_type, question, results):
-    result_str = str(results)
-
-    print("Result of queries execution ", result_str)
-    # Use the AI to generate Python code for plotting the database
-    generate_code_prompt = f"""
-    You are connected to a {db_type} database. You have already retrieved the following data: {result_str}. 
-    Your task is to generate **only** the Python code using Matplotlib or Seaborn to create a plot that visualizes this data based on the user's question: {question}.
-    Do NOT include any comments, explanations, or extra text like "Here's the code." Return only the Python code, and nothing else.
-    """
-    code_response = groq_llm.invoke(generate_code_prompt)
-
-    print("RAW AI response : ", code_response.content)
-
-    # Clean the AI-generated code using the separate cleaning function
-    plot_code = clean_ai_plot_code(code_response.content.strip())
-
-    # Print the cleaned code for debugging
-    print("Clean AI Code", plot_code)
-
-    # Validation: Ensure the response contains valid Python plotting commands
-    if "plt." not in plot_code and "sns." not in plot_code:
-        raise ValueError("AI did not return valid Python code. Response received: " + plot_code)
-
-    return plot_code
 
 
 def get_ai_response(db_type, question):
@@ -140,13 +82,3 @@ def execute_sql(engine, query):
     except Exception as e:
         print(f"Error executing SQL: {str(e)}")
         return None
-
-
-def convert_to_plain_language(result):
-    if not result:
-        return "I couldn't find any relevent information."
-    response = "Here are the result"
-    for row in result:
-        row_text = ", ".join(f"{key}: {value}" for key, value in row.items())
-        response += f"\n- {row_text}"
-    return response

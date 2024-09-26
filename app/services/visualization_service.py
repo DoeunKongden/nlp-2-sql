@@ -19,10 +19,10 @@ def execute_plot_code(plot_code: str, results):
 
         # Automatically replace invalid column names in the plot code
         if 'mal_id' in plot_code and 'mal_id' not in data.columns:
-            plot_code = plot_code.replace("mal_id",data.columns[0])
+            plot_code = plot_code.replace("mal_id", data.columns[0])
 
         if 'name' in plot_code and 'name' not in data.columns:
-            plot_code = plot_code.replace("name",data.columns[1])
+            plot_code = plot_code.replace("name", data.columns[1])
         # Clean the plot code: replace 'None' values in plot code if necessary
         plot_code = re.sub(r"'type': None", "'type': 'Unknown'", plot_code)
 
@@ -50,3 +50,77 @@ def execute_plot_code(plot_code: str, results):
     except Exception as e:
         print(f"Error executing plot code : {traceback.format_exc()}")
         raise e
+
+
+def choose_plot_type(df):
+    """
+    Dynamically select the appropriate plot type based on the structure of the dataframe.
+    """
+    num_columns = df.select_dtypes(include=['number']).columns
+    cat_columns = df.select_dtypes(exclude=['number']).columns
+
+    if len(num_columns) == 1 and len(cat_columns) == 1:
+        # If there's one numeric and one categorical column, use a bar chart
+        return 'bar'
+    elif len(num_columns) > 1:
+        # If there are multiple numeric columns, use a scatterplot or line plot
+        return 'line' if df.shape[0] > 1 else 'scatter'
+    elif len(cat_columns) > 1:
+        # If there are multiple categorical columns, maybe a countplot
+        return 'countplot'
+    elif len(num_columns) == 1:
+        # For single numerical columns, a histogram
+        return 'histogram'
+    else:
+        # Default to heatmap if there's nothing obvious
+        return 'heatmap'
+
+
+def visualize_data(results):
+    """
+    Dynamically create a visualization based on the SQL query result, with improved aesthetics.
+    """
+    df = pd.DataFrame(results)
+    if df.empty:
+        raise ValueError("No data available for visualization.")
+
+    # Setting up a Seaborn theme and palette
+    sns.set_theme(style="whitegrid", palette="coolwarm")
+
+    plot_type = choose_plot_type(df)
+    buf = BytesIO()
+    plt.figure(figsize=(10, 6))
+
+    try:
+        if plot_type == 'bar':
+            sns.barplot(x=df[df.columns[0]], y=df[df.columns[1]], data=df)
+        elif plot_type == 'line':
+            sns.lineplot(x=df.index, y=df[df.columns[0]], data=df)
+        elif plot_type == 'scatter':
+            sns.scatterplot(x=df[df.columns[0]], y=df[df.columns[1]], data=df)
+        elif plot_type == 'countplot':
+            sns.countplot(x=df[df.columns[0]], data=df)
+        elif plot_type == 'histogram':
+            sns.histplot(df[df.columns[0]], bins=10, kde=True)
+        elif plot_type == 'heatmap':
+            sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+        else:
+            raise ValueError(f"Unsupported plot type: {plot_type}")
+
+        # Add customizations like titles, labels, and grid
+        plt.title(f"{plot_type.title()} Plot", fontsize=16, fontweight='bold')
+        plt.xlabel(df.columns[0], fontsize=12)
+        plt.ylabel(df.columns[1] if len(df.columns) > 1 else 'Frequency', fontsize=12)
+        plt.grid(True, linestyle='--', alpha=0.7)
+
+        # Save the plot to the buffer
+        plt.tight_layout()
+        plt.savefig(buf, format='png')
+        buf.seek(0)  # Move to start of the buffer
+        plt.close()
+
+        return buf
+
+    except Exception as e:
+        plt.close()
+        raise ValueError(f"Error generating plot: {str(e)}")
