@@ -4,10 +4,9 @@ from langchain.sql_database import SQLDatabase
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 import os
-
+from sqlalchemy import text
 from app.services.query_service import execute_sql
 from app.utils.clean_ai_plot_code import clean_ai_plot_code
-from app.utils.sql_extraction import extract_sql_query
 
 load_dotenv()
 
@@ -23,76 +22,100 @@ groq_llm = ChatGroq(
 )
 
 
-def extract_sql_from_response(response_text):
+def extract_sql_from_response(response_text: str) -> str:
     """
-       Extract the SQL query from the AI's response text.
+    Extracts and cleans the SQL query from the AI's response text.
     """
     try:
-        # Use regex to find SQL query more accurately
-        sql_query_match = re.search(r"SQLQuery: (.*?);", response_text, re.DOTALL)
+        # Use regex to find the SQL query more accurately, assuming AI labels it as SQLQuery
+        sql_query_match = re.search(r"SQLQuery:\s*(.*)", response_text, re.DOTALL)
+
         if sql_query_match:
-            # Extract the SQL query from the matched group and clean any extra spaces
-            sql_query = sql_query_match.group(1).strip() + ";"
+            # Extract SQL query
+            sql_query = sql_query_match.group(1).strip()
 
-            # Specifically replace escaped double quotes (\") with regular double quotes (")
-            sql_query = sql_query.replace(r'\"', '"')
+            # Cleaning up duplicate queries: If two queries appear, retain only the first one.
+            sql_query = re.split(r';\s*SELECT', sql_query)[0] + ';'
 
-            # Remove any remaining backslashes
-            sql_query = sql_query.replace('\\', '')
+            # Remove unnecessary quotes around column and table names (like "table"."column")
+            sql_query = re.sub(r'\"(\w+)\"', r'\1', sql_query)
 
-            # Ensure there are no double spaces after cleanup
-            sql_query = re.sub(' +', ' ', sql_query)
+            # Fix misplaced quotes (e.g., after column names like "school_name")
+            sql_query = re.sub(r'\"(\w+)\",', r'\1,', sql_query)
+            sql_query = re.sub(r'\",', ',', sql_query)  # Remove extra quotes near commas
+
+            # Remove any remaining unbalanced quotes
+            sql_query = re.sub(r'\"(\w+)\s*', r'\1 ', sql_query)
+            sql_query = re.sub(r'\s*\"(\w+)', r' \1', sql_query)
+
+            # Remove any remaining escaped characters or backslashes
+            sql_query = sql_query.replace("\\", "")
+
+            # Remove any duplicate semicolons
+            sql_query = re.sub(r';+', ';', sql_query).strip()
+
+            # Ensure query ends with a single semicolon
+            if not sql_query.endswith(';'):
+                sql_query += ';'
+
+            # Final trim to clean up any extraneous spaces
+            sql_query = sql_query.strip()
 
             return sql_query
+
         else:
             raise ValueError("No SQL query found in the response.")
 
     except Exception as e:
         print(f"Error extracting SQL from response: {str(e)}")
-        return None
 
 
-def generate_sql_and_execute(question, engine):
+async def generate_sql_and_execute(question, conn):
     try:
-        if not engine:
+        if not conn:
             raise ValueError("Database connection not established. Please connect first.")
 
-        # Create Langchain SQLDatabase object using the engine
-        db = SQLDatabase(engine)
+        # Define a function to create and run the SQL queries chain synchronously
+        def run_sql_chain(connection):
+            # Langchain requires a synchronous SQLDatabase connection
+            db = SQLDatabase(connection)
 
-        # Create the SQL query chain using the ChatGroq as the LLM
-        sql_chain = create_sql_query_chain(groq_llm, db)
+            # Create the SQL query chain using the ChatGroq and LLM
+            sql_chain = create_sql_query_chain(groq_llm, db)
 
-        # Execute the query chain with user's question
-        response = sql_chain.invoke({"question": question})
+            # Execute the query chain with the user's question
+            response = sql_chain.invoke({"question": question})
 
-        print(response)
+            print(response)
 
-        # Extract the sql query from the model response
-        sql_query = extract_sql_query(response)
-        if not sql_query:
-            raise ValueError("Failed to extract SQL query from AI response")
+            # Extract the SQL query from the model response
+            sql_query = extract_sql_from_response(response)
+            if not sql_query:
+                raise ValueError("Failed to extract SQL query from AI response")
 
-        print(sql_query)
+            print(sql_query)
 
-        # Executing the sql queries
-        result = execute_sql(engine, sql_query)
-        if not result:
-            raise ValueError("There was no valid SQL queries to execute.")
+            return sql_query, response
 
-        print(f"SQL result {result}")
+        # Run the SQL generation and execution in synchronous mode using run_sync
+        sql_query, response = await conn.run_sync(run_sql_chain)
 
-        print(f"Generated SQL Query: {sql_query}")
+        # Execute the SQL query asynchronously (use await)
+        result = await conn.execute(text(sql_query))
+
+        # Fetch all rows asynchronously
+        rows = await result.fetchall()
 
         return {
             "sql_query": sql_query,
             "response": response,
-            "result": result
+            "result": rows
         }
 
     except Exception as e:
         print(f"Error in generating SQL with GROQ: {str(e)}")
         return None
+
 
 
 def generate_plot_code_from_ai(result, question):
@@ -105,7 +128,8 @@ def generate_plot_code_from_ai(result, question):
 
     {formatted_sql_result}
 
-    Based on this query result, generate Python code to create an appropriate visualization using Matplotlib or Seaborn.
+    Based on this query result, generate Python code to create an appropriate
+    visualization using Matplotlib or Seaborn.
     The code should be ready to execute.
     
     The user's question was: {question}
@@ -116,6 +140,7 @@ def generate_plot_code_from_ai(result, question):
         ai_response = groq_llm.invoke(prompt)
         raw_plot_code = ai_response.content  # The generated Python code
 
+        print("Raw python code ", raw_plot_code)
         if not raw_plot_code:
             print("There was no raw plot code response")
 

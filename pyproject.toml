@@ -12,6 +12,11 @@ langchain-llm = "^0.4.15"
 pydantic = "^2.9.2"
 matplotlib = "^3.9.2"
 seaborn = "^0.13.2"
+fastapi = {extras = ["all"], version = "^0.115.0"}
+python-multipart = "^0.0.12"
+passlib = "^1.7.4"
+bcrypt = "^4.2.0"
+asyncpg = "^0.29.0"
 
 
 [build-system]

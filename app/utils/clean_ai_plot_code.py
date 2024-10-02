@@ -59,6 +59,9 @@ def clean_ai_plot_code(plot_code: str) -> str:
     # Remove plt.show()
     plot_code = plot_code.replace("plt.show()", "")
 
+    # Remove plt.show()
+    plot_code = plot_code.replace("Python", "")
+
     # Remove any lines that don't contain actual code, such as description or explanation text
     lines = plot_code.splitlines()
     cleaned_lines = [line for line in lines if not re.match(r'^\s*(This|Note|You|Make sure|Please|Ensure).*', line)]
