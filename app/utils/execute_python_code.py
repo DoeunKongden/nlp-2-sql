@@ -2,8 +2,9 @@ from io import BytesIO
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+import logging
 
-from app.utils.clean_ai_plot_code import clean_ai_plot_code
+logger = logging.getLogger(__name__)
 
 
 def execute_plot_code(plot_code, results):
@@ -12,7 +13,11 @@ def execute_plot_code(plot_code, results):
     """
     buf = BytesIO()
     try:
-        df = pd.DataFrame(results)  # Convert results to dataframe
+        # Convert the SQL query results to a Pandas DataFrame
+        df = pd.DataFrame(results)
+
+        # Log the DataFrame to ensure it is correctly formatted
+        logger.info(f"DataFrame for plot: {df.head()}")
 
         # Define the global variables that the AI-generated code might use
         exec_globals = {
@@ -22,12 +27,13 @@ def execute_plot_code(plot_code, results):
             'data': df  # Pass the dataframe to be used in the generated code
         }
 
-        print(f"Executing plot_code: {plot_code}")\
+        # Log the generated plot code for debugging
+        logger.info(f"Executing plot code: {plot_code}")
 
         # Execute the AI-generated Python code
         exec(plot_code, exec_globals)
 
-        # Save the plot to a buffer
+        # Save the plot to a buffer if a figure is generated
         if plt.get_fignums():  # Check if any figure was generated
             plt.savefig(buf, format='png')
             plt.close('all')
@@ -37,5 +43,5 @@ def execute_plot_code(plot_code, results):
             raise ValueError("The generated Python code did not create a plot.")
 
     except Exception as e:
-        print(f"Error executing plot code: {str(e)}")
+        logger.error(f"Error executing plot code: {str(e)}")
         return None

@@ -1,14 +1,23 @@
 from app.db.connections import get_database_connection
 from app.services.query_chain import generate_sql_and_execute, generate_plot_code_from_ai
-from app.services.query_service import generate_sql_from_question, execute_sql
-from app.services.visualization_service import execute_plot_code, visualize_data
+from app.services.visualization_service import execute_plot_code
 from fastapi import APIRouter, Depends
 from fastapi import HTTPException
-from io import BytesIO
 from fastapi.responses import StreamingResponse
-from app.services.query_service import get_ai_response
+import logging
+
+from app.utils.sql_utils import convert_decimal_to_float
 
 router = APIRouter()
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)  # Set logging level to INFO or DEBUG as needed
+
+# You can also configure logging to a file or console if needed
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def get_engine():
@@ -20,120 +29,72 @@ async def connect_db(db_type: str, user: str, password: str, host: str, database
     try:
         global engineGlobal
         engineGlobal = get_database_connection(db_type, user, password, host, database)
+        logger.info("Database connected successfully.")
         return {"message": "Database connected successfully."}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Database connection failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to connect to database.")
 
 
 @router.post("/ask-sql-chain/")
 async def ask_question_chain(question: str, engine=Depends(get_engine)):
     try:
+        # step 1: log after invoking the llm
+        logger.info(f"Invoking Groq LLM with question: {question}")
         sql_query_result = generate_sql_and_execute(question, engine)
+        logger.info(f"LLM response: {sql_query_result['response']}")
+
+        # step 2: log after SQL execution
+        logger.info(f"Executed SQL query: {sql_query_result['sql_query']}")
+        logger.info(f"SQL execution result: {sql_query_result['result']}")
+
         return {"result": sql_query_result}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@router.post("/data-to-visualization")
-async def data_to_visualization(question: str, engine=Depends(get_engine)):
-    try:
-        # Generate SQL and Execute
-        sql_result = generate_sql_and_execute(question, engine)
-
-        if not sql_result or not sql_result['result']:
-            raise HTTPException(status_code=500, detail="No data return from SQL query.")
-
-        # Generate the visualization
-        buf = visualize_data(sql_result['result'])
-
-        # return the plot as an image (png)
-        return StreamingResponse(buf, media_type="image/png")
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=(str(e)))
+        logger.error(f"SQL generation and execution failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Error processing SQL query.")
 
 
 @router.post("/code-to-visualization")
 async def code_to_visualization(question: str, engine=Depends(get_engine)):
     try:
-        # Generate SQL query from the question
+        # Step 1: Log after invoking the LLM for SQL generation
+        logger.info(f"Invoking Groq LLM for SQL generation with question: {question}")
         sql_result = generate_sql_and_execute(question, engine)
 
-        if not sql_result:
+        if not sql_result or not sql_result.get('response'):
+            logger.warning(f"No data found for the query: {question}")
             return {"error": "No data found for the query."}
 
-        # Generate Python Code for the visualization
-        plot_code = generate_plot_code_from_ai(sql_result, question)
+        # Convert Decimal type float in result
+        sql_result['result'] = convert_decimal_to_float(sql_result['result'])
+        logger.info(f"SQL result (after converting Decimal): {sql_result['result']}")
+
+        # Step 2: Log SQL query and execution result
+        logger.info(f"Generated SQL query: {sql_result['response']}")
+        logger.info(f"SQL Query result: {sql_result['result']}")
+
+        # Step 3: Log after generating python code for visualization
+        logger.info("Generating Python code for visualization.")
+
+        # Generate Python code for the visualization from the AI
+        plot_code = generate_plot_code_from_ai(sql_result['result'], question)
 
         if not plot_code:
-            return {"error": "Failed to generate python code for visualization."}
-        plot_image = visualize_data(sql_result['result'])
+            logger.error("Failed to generate python code for visualization")
+            return {"error": "Failed to generate Python code for visualization."}
 
-        # Execute the python plot code and return the image
+        logger.info(f"Generated Python plot code: {plot_code}")
+
+        # Step 4: log after executing the generated plot code
         buf = execute_plot_code(plot_code, sql_result['result'])
+
         if buf:
+            logger.info("Plot generated successfully")
             return StreamingResponse(buf, media_type="image/png")
         else:
-            return {"error": "Failed to generate the plot "}
+            logging.error("Failed to generated the plot.")
+            return {"error": "Failed to generate the plot."}
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=(str(e)))
-
-# @router.post("/ask/")
-# async def ask_question(question: str, db_type: str, engine=Depends(get_engine)):
-#     try:
-#         sql_query = generate_sql_from_question(db_type, question)
-#         results = execute_sql(engine, sql_query)
-#         plain_language_response = get_ai_response(db_type, question)
-#
-#         return {
-#             "sql_query": sql_query,
-#             "result": results,
-#             "plain_language_response": plain_language_response.content
-#         }
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
-
-
-# @router.post("/code-2-visualize")
-# async def ask_and_visualize(question: str, db_type: str, engine=Depends(get_engine)):
-#     try:
-#         # step 1 : AI generate SQL Queries
-#         sql_query = generate_sql_from_question(db_type, question)
-#
-#         # Step 2 : Execute the SQL Queries to get result
-#         results = execute_sql(engine, sql_query)
-#
-#         # Step 3 : Generate python code for plotting the visualization
-#         plot_code = get_ai_plot_code(db_type, question, results)
-#
-#         # Step 4 : Execute The AI generate plot code
-#         buf = execute_plot_code(plot_code, results)
-#
-#         return StreamingResponse(buf, media_type="image/png")
-#
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
-
-
-# @router.post("/data-2-visualize/")
-# async def data_2_visualize(question: str, db_type: str, engine=Depends(get_engine)):
-#     try:
-#         # Generate the SQL from question using AI
-#         sql_query = generate_sql_from_question(db_type, question)
-#
-#         # Execute the SQL queries
-#         results = execute_sql(engine, sql_query)
-#
-#         # Visualize the data, base on query result
-#         plot_image = visualize_data(results)
-#
-#         # Ensure the plot image is binary system(BytesIO)
-#         if not isinstance(plot_image, BytesIO):
-#             raise HTTPException(status_code=500, detail="Error generating the plot.")
-#
-#         # Return the plot as a PNG image via StreamingResponse
-#         return StreamingResponse(plot_image, media_type="image/png")
-#
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
+        logger.error(f"Error in code to visualization : {str(e)}")
+        raise HTTPException(status_code=500, detail="An error occurred during processing.")
