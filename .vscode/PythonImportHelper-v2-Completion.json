@@ -1,0 +1,856 @@
+[
+    {
+        "label": "sqlalchemy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "SQLAlchemyError",
+        "importPath": "sqlalchemy.exc",
+        "description": "sqlalchemy.exc",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.exc",
+        "documentation": {}
+    },
+    {
+        "label": "NullPool",
+        "importPath": "sqlalchemy.pool",
+        "description": "sqlalchemy.pool",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.pool",
+        "documentation": {}
+    },
+    {
+        "label": "get_database_connection",
+        "importPath": "app.db.connections",
+        "description": "app.db.connections",
+        "isExtraImport": true,
+        "detail": "app.db.connections",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sql_and_execute",
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "isExtraImport": true,
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "generate_plot_code_from_ai",
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "isExtraImport": true,
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "execute_plot_code",
+        "importPath": "app.services.visualization_service",
+        "description": "app.services.visualization_service",
+        "isExtraImport": true,
+        "detail": "app.services.visualization_service",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "responses",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "StreamingResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "convert_decimal_to_float",
+        "importPath": "app.utils.sql_utils",
+        "description": "app.utils.sql_utils",
+        "isExtraImport": true,
+        "detail": "app.utils.sql_utils",
+        "documentation": {}
+    },
+    {
+        "label": "create_readonly_user",
+        "importPath": "app.utils.sql_utils",
+        "description": "app.utils.sql_utils",
+        "isExtraImport": true,
+        "detail": "app.utils.sql_utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_database_schema",
+        "importPath": "app.utils.sql_utils",
+        "description": "app.utils.sql_utils",
+        "isExtraImport": true,
+        "detail": "app.utils.sql_utils",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "create_sql_query_chain",
+        "importPath": "langchain.chains.sql_database.query",
+        "description": "langchain.chains.sql_database.query",
+        "isExtraImport": true,
+        "detail": "langchain.chains.sql_database.query",
+        "documentation": {}
+    },
+    {
+        "label": "create_sql_query_chain",
+        "importPath": "langchain.chains.sql_database.query",
+        "description": "langchain.chains.sql_database.query",
+        "isExtraImport": true,
+        "detail": "langchain.chains.sql_database.query",
+        "documentation": {}
+    },
+    {
+        "label": "SQLDatabase",
+        "importPath": "langchain.sql_database",
+        "description": "langchain.sql_database",
+        "isExtraImport": true,
+        "detail": "langchain.sql_database",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "ChatGroq",
+        "importPath": "langchain_groq",
+        "description": "langchain_groq",
+        "isExtraImport": true,
+        "detail": "langchain_groq",
+        "documentation": {}
+    },
+    {
+        "label": "ChatGroq",
+        "importPath": "langchain_groq",
+        "description": "langchain_groq",
+        "isExtraImport": true,
+        "detail": "langchain_groq",
+        "documentation": {}
+    },
+    {
+        "label": "ChatGroq",
+        "importPath": "langchain_groq",
+        "description": "langchain_groq",
+        "isExtraImport": true,
+        "detail": "langchain_groq",
+        "documentation": {}
+    },
+    {
+        "label": "ChatGroq",
+        "importPath": "langchain_groq",
+        "description": "langchain_groq",
+        "isExtraImport": true,
+        "detail": "langchain_groq",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "execute_sql",
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "isExtraImport": true,
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "clean_ai_plot_code",
+        "importPath": "app.utils.clean_ai_plot_code",
+        "description": "app.utils.clean_ai_plot_code",
+        "isExtraImport": true,
+        "detail": "app.utils.clean_ai_plot_code",
+        "documentation": {}
+    },
+    {
+        "label": "clean_ai_plot_code",
+        "importPath": "app.utils.clean_ai_plot_code",
+        "description": "app.utils.clean_ai_plot_code",
+        "isExtraImport": true,
+        "detail": "app.utils.clean_ai_plot_code",
+        "documentation": {}
+    },
+    {
+        "label": "ast",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ast",
+        "description": "ast",
+        "detail": "ast",
+        "documentation": {}
+    },
+    {
+        "label": "detect_chart_type_with_llm",
+        "importPath": "app.utils.visualization_utils",
+        "description": "app.utils.visualization_utils",
+        "isExtraImport": true,
+        "detail": "app.utils.visualization_utils",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "extract_sql_query",
+        "importPath": "app.utils.sql_extraction",
+        "description": "app.utils.sql_extraction",
+        "isExtraImport": true,
+        "detail": "app.utils.sql_extraction",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "seaborn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "seaborn",
+        "description": "seaborn",
+        "detail": "seaborn",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "traceback",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "traceback",
+        "description": "traceback",
+        "detail": "traceback",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "Decimal",
+        "importPath": "decimal",
+        "description": "decimal",
+        "isExtraImport": true,
+        "detail": "decimal",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "importPath": "app.routes.api",
+        "description": "app.routes.api",
+        "isExtraImport": true,
+        "detail": "app.routes.api",
+        "documentation": {}
+    },
+    {
+        "label": "os,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.",
+        "description": "os.",
+        "detail": "os.",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "Groq",
+        "importPath": "langchain.llms",
+        "description": "langchain.llms",
+        "isExtraImport": true,
+        "detail": "langchain.llms",
+        "documentation": {}
+    },
+    {
+        "label": "LLMChain",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain.prompts",
+        "description": "langchain.prompts",
+        "isExtraImport": true,
+        "detail": "langchain.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "get_database_connection",
+        "kind": 2,
+        "importPath": "app.db.connections",
+        "description": "app.db.connections",
+        "peekOfCode": "def get_database_connection(db_type, user, password, host, database):\n    try:\n        if db_type == \"postgresql\":\n            connection_string = f'postgresql+psycopg2://{user}:{password}@{host}/{database}'\n        elif db_type == \"mysql\":\n            connection_string = f'mysql+mysqlconnector://{user}:{password}@{host}/{database}'\n        else:\n            raise ValueError(\"Unsupported Database Type.\")\n        # Create an engine with connection pooling (NullPool is used for no pooling, but can be customized)\n        engine = create_engine(connection_string, pool_pre_ping=True, pool_size=5, max_overflow=10)",
+        "detail": "app.db.connections",
+        "documentation": {}
+    },
+    {
+        "label": "get_engine",
+        "kind": 2,
+        "importPath": "app.routes.api",
+        "description": "app.routes.api",
+        "peekOfCode": "def get_engine():\n    return engineGlobal\n@router.post(\"/connect_db\")\nasync def connect_db(db_type: str, user: str, password: str, host: str, database: str):\n    try:\n        global engineGlobal\n        engineGlobal = get_database_connection(db_type, user, password, host, database)\n        # Create read-only user ofr llm\n        create_readonly_user(engineGlobal, database)\n        logger.info(\"Database connected successfully.\")",
+        "detail": "app.routes.api",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routes.api",
+        "description": "app.routes.api",
+        "peekOfCode": "router = APIRouter()\nlogger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)  # Set logging level to INFO or DEBUG as needed\n# You can also configure logging to a file or console if needed\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\ndef get_engine():\n    return engineGlobal",
+        "detail": "app.routes.api",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.routes.api",
+        "description": "app.routes.api",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)  # Set logging level to INFO or DEBUG as needed\n# You can also configure logging to a file or console if needed\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\ndef get_engine():\n    return engineGlobal\n@router.post(\"/connect_db\")",
+        "detail": "app.routes.api",
+        "documentation": {}
+    },
+    {
+        "label": "handler",
+        "kind": 5,
+        "importPath": "app.routes.api",
+        "description": "app.routes.api",
+        "peekOfCode": "handler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\ndef get_engine():\n    return engineGlobal\n@router.post(\"/connect_db\")\nasync def connect_db(db_type: str, user: str, password: str, host: str, database: str):\n    try:\n        global engineGlobal",
+        "detail": "app.routes.api",
+        "documentation": {}
+    },
+    {
+        "label": "formatter",
+        "kind": 5,
+        "importPath": "app.routes.api",
+        "description": "app.routes.api",
+        "peekOfCode": "formatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\ndef get_engine():\n    return engineGlobal\n@router.post(\"/connect_db\")\nasync def connect_db(db_type: str, user: str, password: str, host: str, database: str):\n    try:\n        global engineGlobal\n        engineGlobal = get_database_connection(db_type, user, password, host, database)",
+        "detail": "app.routes.api",
+        "documentation": {}
+    },
+    {
+        "label": "validate_python_code",
+        "kind": 2,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "def validate_python_code(python_code):\n    \"\"\"\n    Validate the python code syntax without executing it, using the ast module.\n    Return True if the code is valid, otherwise return the error message.\n    \"\"\"\n    try:\n        # Parse the python code using ast.parse\n        ast.parse(python_code)\n        return True\n    except SyntaxError as e:",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "extract_sql_from_response",
+        "kind": 2,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "def extract_sql_from_response(response_text):\n    \"\"\"\n    Extract the SQL query from the AI's response text.\n    \"\"\"\n    try:\n        # Use regex to capture the SQL query\n        sql_query_match = re.search(\n            r\"(SELECT[\\s\\S]*?ORDER BY.*?;)\", response_text, re.DOTALL\n        )\n        if sql_query_match:",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sql_and_execute",
+        "kind": 2,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "def generate_sql_and_execute(question, engine, max_retries=5):\n    \"\"\"\n    A function that will generate SQL from Text and execute them to get results.\n    The result will then be responded back to the user in plain human language.\n    \"\"\"\n    try:\n        if not engine:\n            raise HTTPException(\n                status_code=status.HTTP_400_BAD_REQUEST,\n                detail=\"Database connection is not established. Please connect to a database first.\",",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "generate_plot_code_from_ai",
+        "kind": 2,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "def generate_plot_code_from_ai(result, question, max_retries=5, sleep_interval=1):\n    retry_count = 0\n    error_message = \"\"\n    incomplete_code = False\n    # Detect the chart type using the new LLM-based function\n    chart_type = detect_chart_type_with_llm(result, question)\n    if not chart_type:\n        logger.error(f\"Failed to detect chart type using LLM.\")\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nlogger.setLevel(logging.INFO)  # Set logging level to INFO or DEBUG as needed\n# You can also configure logging to a file or console if needed\nhandler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\nload_dotenv()\n# Get the api key from the environment\napi_key = os.getenv(\"GROQ_API_KEY\")",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "handler",
+        "kind": 5,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "handler = logging.StreamHandler()\nformatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\nload_dotenv()\n# Get the api key from the environment\napi_key = os.getenv(\"GROQ_API_KEY\")\n# llm = Ollama(model=\"llama3.2\")\ngroq_llm = ChatGroq(\n    model=\"llama3-8b-8192\",",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "formatter",
+        "kind": 5,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "formatter = logging.Formatter(\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\")\nhandler.setFormatter(formatter)\nlogger.addHandler(handler)\nload_dotenv()\n# Get the api key from the environment\napi_key = os.getenv(\"GROQ_API_KEY\")\n# llm = Ollama(model=\"llama3.2\")\ngroq_llm = ChatGroq(\n    model=\"llama3-8b-8192\",\n    temperature=0.7,",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "api_key",
+        "kind": 5,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "api_key = os.getenv(\"GROQ_API_KEY\")\n# llm = Ollama(model=\"llama3.2\")\ngroq_llm = ChatGroq(\n    model=\"llama3-8b-8192\",\n    temperature=0.7,\n    max_tokens=None,\n    timeout=None,\n    max_retries=10,\n)\ndef validate_python_code(python_code):",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "groq_llm",
+        "kind": 5,
+        "importPath": "app.services.query_chain",
+        "description": "app.services.query_chain",
+        "peekOfCode": "groq_llm = ChatGroq(\n    model=\"llama3-8b-8192\",\n    temperature=0.7,\n    max_tokens=None,\n    timeout=None,\n    max_retries=10,\n)\ndef validate_python_code(python_code):\n    \"\"\"\n    Validate the python code syntax without executing it, using the ast module.",
+        "detail": "app.services.query_chain",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_response",
+        "kind": 2,
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "peekOfCode": "def get_ai_response(db_type, question):\n    # Format the prompt with the context\n    prompt_with_context = prompt.format(db_type=db_type, question=question)\n    try:\n        # Invoke the Groq LLM by passing the prompt as a string, not a dictionary\n        ai_response = groq_llm.invoke(prompt_with_context)  # Pass prompt_with_context as a string\n        return ai_response\n    except Exception as e:\n        print(f\"Error invoking LLM: {str(e)}\")\n        return None  # Return None in case of an error, so it's not passed to SQL execution",
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sql_from_question",
+        "kind": 2,
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "peekOfCode": "def generate_sql_from_question(db_type, question):\n    # Format the prompt with the context\n    prompt_with_context = prompt.format(db_type=db_type, question=question)\n    try:\n        # Invoke the Groq LLM by passing the prompt as a string, not a dictionary\n        ai_response = groq_llm.invoke(prompt_with_context)  # Pass prompt_with_context as a string\n        # Extract the SQL query from the response content\n        sql_response = extract_sql_query(ai_response.content)\n        print(\"SQL response:\", sql_response)\n        return sql_response",
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "execute_sql",
+        "kind": 2,
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "peekOfCode": "def execute_sql(engine, query):\n    if query is None:\n        print(\"No valid SQL query to execute.\")\n        return None\n    try:\n        with engine.connect() as connection:\n            result = connection.execute(text(query))\n            rows = result.fetchall()\n            # Fetch the column names\n            columns = result.keys()",
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "api_key",
+        "kind": 5,
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "peekOfCode": "api_key = os.getenv(\"GROQ_API_KEY\")\ngroq_llm = ChatGroq(\n    model=\"llama3-groq-8b-8192-tool-use-preview\",\n    temperature=0,\n    max_tokens=None,\n    timeout=None,\n    max_retries=2,\n)\n# Defining prompt template: For connecting to database and generate SQL Queries\nprompt_template = \"\"\"",
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "groq_llm",
+        "kind": 5,
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "peekOfCode": "groq_llm = ChatGroq(\n    model=\"llama3-groq-8b-8192-tool-use-preview\",\n    temperature=0,\n    max_tokens=None,\n    timeout=None,\n    max_retries=2,\n)\n# Defining prompt template: For connecting to database and generate SQL Queries\nprompt_template = \"\"\"\nYou are connected to a {db_type} database. When the user asks a question, respond clearly in plain English first, explaining what the SQL query will do. ",
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "prompt_template",
+        "kind": 5,
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "peekOfCode": "prompt_template = \"\"\"\nYou are connected to a {db_type} database. When the user asks a question, respond clearly in plain English first, explaining what the SQL query will do. \nThen generate a standard SQL query (without using specific database commands like `\\dt`), which retrieves the answer from the database.\nQuestion: {question}\n\"\"\"\nprompt = PromptTemplate.from_template(prompt_template)\ndef get_ai_response(db_type, question):\n    # Format the prompt with the context\n    prompt_with_context = prompt.format(db_type=db_type, question=question)\n    try:",
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "prompt",
+        "kind": 5,
+        "importPath": "app.services.query_service",
+        "description": "app.services.query_service",
+        "peekOfCode": "prompt = PromptTemplate.from_template(prompt_template)\ndef get_ai_response(db_type, question):\n    # Format the prompt with the context\n    prompt_with_context = prompt.format(db_type=db_type, question=question)\n    try:\n        # Invoke the Groq LLM by passing the prompt as a string, not a dictionary\n        ai_response = groq_llm.invoke(prompt_with_context)  # Pass prompt_with_context as a string\n        return ai_response\n    except Exception as e:\n        print(f\"Error invoking LLM: {str(e)}\")",
+        "detail": "app.services.query_service",
+        "documentation": {}
+    },
+    {
+        "label": "execute_plot_code",
+        "kind": 2,
+        "importPath": "app.services.visualization_service",
+        "description": "app.services.visualization_service",
+        "peekOfCode": "def execute_plot_code(plot_code: str, results):\n    \"\"\"\n        Executes the AI-generated Python plot code, passes the SQL result data, and returns the generated plot as a buffer.\n        Args:\n            plot_code (str): The Python code generated by the AI to create the plot.\n            results (list[dict]): The SQL result data passed to the plot code.\n        Returns:\n            BytesIO: A buffer containing the plot image in PNG format, or None if there was an error.\n    \"\"\"\n    buf = BytesIO()",
+        "detail": "app.services.visualization_service",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.services.visualization_service",
+        "description": "app.services.visualization_service",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef execute_plot_code(plot_code: str, results):\n    \"\"\"\n        Executes the AI-generated Python plot code, passes the SQL result data, and returns the generated plot as a buffer.\n        Args:\n            plot_code (str): The Python code generated by the AI to create the plot.\n            results (list[dict]): The SQL result data passed to the plot code.\n        Returns:\n            BytesIO: A buffer containing the plot image in PNG format, or None if there was an error.\n    \"\"\"",
+        "detail": "app.services.visualization_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_ai_plot_code",
+        "kind": 2,
+        "importPath": "app.utils.ai_generate_code",
+        "description": "app.utils.ai_generate_code",
+        "peekOfCode": "def get_ai_plot_code(db_type, question, results):\n    result_str = str(results)\n    print(\"Result of queries execution \", result_str)\n    # Use the AI to generate Python code for plotting the database\n    generate_code_prompt = f\"\"\"\n    You are connected to a {db_type} database. You have already retrieved the following data: {result_str}. \n    Your task is to generate **only** the Python code using Matplotlib or Seaborn to create a plot that visualizes this data based on the user's question: {question}.\n    Do NOT include any comments, explanations, or extra text like \"Here's the code.\" Return only the Python code, and nothing else.\n    \"\"\"\n    code_response = groq_llm.invoke(generate_code_prompt)",
+        "detail": "app.utils.ai_generate_code",
+        "documentation": {}
+    },
+    {
+        "label": "api_key",
+        "kind": 5,
+        "importPath": "app.utils.ai_generate_code",
+        "description": "app.utils.ai_generate_code",
+        "peekOfCode": "api_key = os.getenv(\"GROQ_API_KEY\")\ngroq_llm = ChatGroq(\n    model=\"llama3-groq-8b-8192-tool-use-preview\",\n    temperature=0,\n    max_tokens=None,\n    timeout=None,\n    max_retries=2,\n)\ndef get_ai_plot_code(db_type, question, results):\n    result_str = str(results)",
+        "detail": "app.utils.ai_generate_code",
+        "documentation": {}
+    },
+    {
+        "label": "groq_llm",
+        "kind": 5,
+        "importPath": "app.utils.ai_generate_code",
+        "description": "app.utils.ai_generate_code",
+        "peekOfCode": "groq_llm = ChatGroq(\n    model=\"llama3-groq-8b-8192-tool-use-preview\",\n    temperature=0,\n    max_tokens=None,\n    timeout=None,\n    max_retries=2,\n)\ndef get_ai_plot_code(db_type, question, results):\n    result_str = str(results)\n    print(\"Result of queries execution \", result_str)",
+        "detail": "app.utils.ai_generate_code",
+        "documentation": {}
+    },
+    {
+        "label": "clean_ai_plot_code",
+        "kind": 2,
+        "importPath": "app.utils.clean_ai_plot_code",
+        "description": "app.utils.clean_ai_plot_code",
+        "peekOfCode": "def clean_ai_plot_code(plot_code: str) -> str:\n    \"\"\"\n    Cleans the AI-generated Python code to remove unwanted artifacts,\n    such as escape characters, placeholders, comments, introductory text,\n    and any non-code descriptions.\n    \"\"\"\n    # Remove introductory phrases like \"Here is the Python code to create a...\"\n    plot_code = re.sub(r'Here is the Python code.*?:', '', plot_code, flags=re.DOTALL)\n    # Remove descriptions like \"This code will create a bar chart...\"\n    plot_code = re.sub(r'This code will.*?:', '', plot_code, flags=re.DOTALL)",
+        "detail": "app.utils.clean_ai_plot_code",
+        "documentation": {}
+    },
+    {
+        "label": "execute_plot_code",
+        "kind": 2,
+        "importPath": "app.utils.execute_python_code",
+        "description": "app.utils.execute_python_code",
+        "peekOfCode": "def execute_plot_code(plot_code, results):\n    \"\"\"\n    Execute the Python plot code generated by the AI.\n    \"\"\"\n    buf = BytesIO()\n    try:\n        # Convert the SQL query results to a Pandas DataFrame\n        df = pd.DataFrame(results)\n        # Log the DataFrame to ensure it is correctly formatted\n        logger.info(f\"DataFrame for plot: {df.head()}\")",
+        "detail": "app.utils.execute_python_code",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.utils.execute_python_code",
+        "description": "app.utils.execute_python_code",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef execute_plot_code(plot_code, results):\n    \"\"\"\n    Execute the Python plot code generated by the AI.\n    \"\"\"\n    buf = BytesIO()\n    try:\n        # Convert the SQL query results to a Pandas DataFrame\n        df = pd.DataFrame(results)\n        # Log the DataFrame to ensure it is correctly formatted",
+        "detail": "app.utils.execute_python_code",
+        "documentation": {}
+    },
+    {
+        "label": "convert_to_plain_language",
+        "kind": 2,
+        "importPath": "app.utils.plain_language_convertion",
+        "description": "app.utils.plain_language_convertion",
+        "peekOfCode": "def convert_to_plain_language(result):\n    if not result:\n        return \"I couldn't find any relevent information.\"\n    response = \"Here are the result\"\n    for row in result:\n        row_text = \", \".join(f\"{key}: {value}\" for key, value in row.items())\n        response += f\"\\n- {row_text}\"\n    return response",
+        "detail": "app.utils.plain_language_convertion",
+        "documentation": {}
+    },
+    {
+        "label": "extract_sql_query",
+        "kind": 2,
+        "importPath": "app.utils.sql_extraction",
+        "description": "app.utils.sql_extraction",
+        "peekOfCode": "def extract_sql_query(response_text: str) -> str:\n    \"\"\"\n    Extract the SQL query from the AI's response text.\n    \"\"\"\n    try:\n        # Use regex to extract the SQL query from the response\n        sql_query_match = re.search(r\"SQLQuery: (.*)\", response_text, re.DOTALL)\n        if sql_query_match:\n            # Extract the SQL query, remove unnecessary backslashes, and clean it up\n            sql_query = sql_query_match.group(1).strip()",
+        "detail": "app.utils.sql_extraction",
+        "documentation": {}
+    },
+    {
+        "label": "get_database_schema",
+        "kind": 2,
+        "importPath": "app.utils.sql_utils",
+        "description": "app.utils.sql_utils",
+        "peekOfCode": "def get_database_schema(engine):\n    \"\"\"\n    Retrieve the schema (Tables and Column) of the connected database.\n    \"\"\"\n    inspector = sqlalchemy.inspect(engine)\n    schema = {}\n    for table_name in inspector.get_table_names():\n        columns = inspector.get_columns(table_name)\n        schema[table_name] = [col[\"name\"] for col in columns]\n    return schema",
+        "detail": "app.utils.sql_utils",
+        "documentation": {}
+    },
+    {
+        "label": "convert_decimal_to_float",
+        "kind": 2,
+        "importPath": "app.utils.sql_utils",
+        "description": "app.utils.sql_utils",
+        "peekOfCode": "def convert_decimal_to_float(result):\n    \"\"\"\n    Converts all Decimal values in the result to float.\n    Args:\n        result (list): The SQL result as a list of dictionaries.\n    Returns:\n        list: The result with Decimal values converted to float.\n    \"\"\"\n    for row in result:\n        for key, value in row.items():",
+        "detail": "app.utils.sql_utils",
+        "documentation": {}
+    },
+    {
+        "label": "create_readonly_user",
+        "kind": 2,
+        "importPath": "app.utils.sql_utils",
+        "description": "app.utils.sql_utils",
+        "peekOfCode": "def create_readonly_user(engine, database_name):\n    try:\n        readonly_username = \"llm_readonly_user\"\n        readonly_password = \"llm_readonly_password\"  # You can generate a secure password here\n        # Use raw_connection for administrative commands\n        connection = engine.raw_connection()\n        cursor = connection.cursor()\n        try:\n            # Check if the user already exists\n            cursor.execute(f\"SELECT 1 FROM pg_roles WHERE rolname='{readonly_username}';\")",
+        "detail": "app.utils.sql_utils",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.utils.sql_utils",
+        "description": "app.utils.sql_utils",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef get_database_schema(engine):\n    \"\"\"\n    Retrieve the schema (Tables and Column) of the connected database.\n    \"\"\"\n    inspector = sqlalchemy.inspect(engine)\n    schema = {}\n    for table_name in inspector.get_table_names():\n        columns = inspector.get_columns(table_name)\n        schema[table_name] = [col[\"name\"] for col in columns]",
+        "detail": "app.utils.sql_utils",
+        "documentation": {}
+    },
+    {
+        "label": "detect_chart_type_with_llm",
+        "kind": 2,
+        "importPath": "app.utils.visualization_utils",
+        "description": "app.utils.visualization_utils",
+        "peekOfCode": "def detect_chart_type_with_llm(sql_result, question):\n    \"\"\"\n    Uses the Groq LLM model to detect and return the appropriate chart type based on the SQL result.\n    Args:\n        sql_result (list): The SQL query result in list format.\n        question (str): The user's natural language query.\n    Returns:\n        str: The chart type (e.g., 'bar', 'line', 'pie', etc.), with no additional text or comments.\n    \"\"\"\n    formatted_sql_result = str(sql_result)",
+        "detail": "app.utils.visualization_utils",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "app.utils.visualization_utils",
+        "description": "app.utils.visualization_utils",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n# Initialize Groq LLM\n# Initialize Groq LLM\ngroq_llm = ChatGroq(\n    model=\"llama3-8b-8192\",\n    temperature=0,\n    max_tokens=None,\n    timeout=None,\n    max_retries=10,\n)",
+        "detail": "app.utils.visualization_utils",
+        "documentation": {}
+    },
+    {
+        "label": "groq_llm",
+        "kind": 5,
+        "importPath": "app.utils.visualization_utils",
+        "description": "app.utils.visualization_utils",
+        "peekOfCode": "groq_llm = ChatGroq(\n    model=\"llama3-8b-8192\",\n    temperature=0,\n    max_tokens=None,\n    timeout=None,\n    max_retries=10,\n)\ndef detect_chart_type_with_llm(sql_result, question):\n    \"\"\"\n    Uses the Groq LLM model to detect and return the appropriate chart type based on the SQL result.",
+        "detail": "app.utils.visualization_utils",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app = FastAPI()\n# Configure CORS\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"http://localhost:3000\"],  # Frontend origin\n    allow_credentials=True,\n    allow_methods=[\"*\"],  # Allow all HTTP methods (GET, POST, etc.)\n    allow_headers=[\"*\"],  # Allow all headers\n)\n# Include the routes",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "generate_sql_chain",
+        "kind": 2,
+        "importPath": "langserve.llm_service",
+        "description": "langserve.llm_service",
+        "peekOfCode": "def generate_sql_chain():\n    template = \"Translate this question into a SQL query: {question}\"\n    prompt = PromptTemplate(template=template, input_variables=[\"question\"])\n    llm_chain = LLMChain(prompt=prompt, llm=groq_llm)\n    return llm_chain",
+        "detail": "langserve.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "api_key",
+        "kind": 5,
+        "importPath": "langserve.llm_service",
+        "description": "langserve.llm_service",
+        "peekOfCode": "api_key = os.getenv(\"GROQ_API_KEY\")\ngroq_llm = Groq(api_key=api_key)\n# Define a Langchain model that generates SQL queries\ndef generate_sql_chain():\n    template = \"Translate this question into a SQL query: {question}\"\n    prompt = PromptTemplate(template=template, input_variables=[\"question\"])\n    llm_chain = LLMChain(prompt=prompt, llm=groq_llm)\n    return llm_chain",
+        "detail": "langserve.llm_service",
+        "documentation": {}
+    },
+    {
+        "label": "groq_llm",
+        "kind": 5,
+        "importPath": "langserve.llm_service",
+        "description": "langserve.llm_service",
+        "peekOfCode": "groq_llm = Groq(api_key=api_key)\n# Define a Langchain model that generates SQL queries\ndef generate_sql_chain():\n    template = \"Translate this question into a SQL query: {question}\"\n    prompt = PromptTemplate(template=template, input_variables=[\"question\"])\n    llm_chain = LLMChain(prompt=prompt, llm=groq_llm)\n    return llm_chain",
+        "detail": "langserve.llm_service",
+        "documentation": {}
+    }
+]
