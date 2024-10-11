@@ -233,7 +233,7 @@ def generate_plot_code_from_ai(result, question, max_retries=5, sleep_interval=1
     formatted_sql_result = str(result)
 
     while retry_count < max_retries:
-        # Prepare the prompt
+        # Prepare the prompt for generating Python code
         prompt = f"""
         The SQL query result is as follows:
 
@@ -251,17 +251,20 @@ def generate_plot_code_from_ai(result, question, max_retries=5, sleep_interval=1
         8. Ensures x-axis labels are rotated if necessary to prevent overlap.
         9. For pie charts, ensures the percentages displayed are formatted correctly and labeled. Use `startangle=90` and `autopct='%.1f%%'` for proper labeling.
         10. Please add data labels to any visualization.
-        11. Ensure the code is valid and complete before returning it. Avoid truncating the code in the middle of statements or leaving out required function calls like `plt.show()` or `plt.savefig()`.
+        11. If the user asks to exclude specific data (e.g., "exclude Product XX"), ensure that the excluded data is not part of the final plot. The exclusion should be based on what the user mentioned in the question.
+        12. If the user asks to include only specific data (e.g., "include only Product XX and Product YY"), ensure that only the mentioned data is included in the final plot.
+        13. Ensure the code is valid and complete before returning it. Avoid truncating the code in the middle of statements or leaving out required function calls like `plt.show()` or `plt.savefig()`.
 
         **Important**:
         - Ensure that the Python code is clean, follows best practices, and avoids deprecated or soon-to-be-deprecated features.
         - **Ensure to use `sns.set_style("darkgrid")` for Seaborn styles, and avoid using styles as parameters for plotting functions.**
-        - If any previous queries or generated code failed with errors such as "{error_message}", **ensure the new code addresses and fixes these issues**. For example:
         - If the previous error was "unterminated string literal", make sure all strings are properly closed and terminated.
         - If the previous error was "could not interpret value 'darkgrid' for 'style'", use `sns.set_style()` instead of passing it as a parameter to plotting functions.
+        - If the user asked to exclude or include certain data points, ensure that the generated code handles these cases properly by filtering the dataset.
         - If the generated code is too large to fit in one response, generate it in parts. Return only the Python code. Do not include any extra text, language identifiers (like 'Python:'), or comments.
+        - Do not include any language identifiers (like 'Python' or 'Python:')
         - Ensure the generated data is complete. If ellipsis (...) appears in the data, return the full data instead.
-        
+
         The user's question was: {question}
         """
 
